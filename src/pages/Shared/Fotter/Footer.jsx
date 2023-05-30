@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <h2>this is footer</h2>
+            <p className='text-center'>	&#169;all copyright reserved by hmyahya</p>
         </div>
     );
 };
