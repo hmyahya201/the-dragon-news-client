@@ -1,17 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import moment from 'moment';
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, Image } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
 import { FaRegBookmark, FaRegEye, FaRegStar, FaShareAlt, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 
 const NewsCard = ({news}) => {
-    console.log(news)
-   
-    const { _id, details, author, image_url, rating, thumbnail_url, title,total_view,} = news;
+    const { _id, details, author, image_url, rating, title,total_view,} = news;
     return (
         <div>
             <Card className="mb-4">
@@ -36,7 +33,7 @@ const NewsCard = ({news}) => {
                         </Card.Text>
                     </Card.Body>
                 <Card.Footer className="text-muted d-flex align-items-center">
-                    <div className='flex-grow-1'>
+                    <div className='flex-grow-1g'>
                         <Rating 
                              placeholderRating={rating?.number}
                              readonly
