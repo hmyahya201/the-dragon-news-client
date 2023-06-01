@@ -1,12 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import { Button, Container, Form  } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProviders';
 
 
 const Login = () => {
     const {loginUser} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    
+    const from = location?.state?.from?.pathname || "/category/0";
 
     const loginHandler = (event)=>{
         event.preventDefault();
@@ -17,6 +21,7 @@ const Login = () => {
        .then(result=>{
         alert("login Success")
         form.reset()
+        navigate(from, {replace: true})
        })
        .catch(error=>{
         console.log(error.message)
