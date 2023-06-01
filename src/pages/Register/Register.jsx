@@ -6,6 +6,7 @@ import {Link } from 'react-router-dom';
 const Register = () => {
     return (
         <Container className='w-50 max-auto my-5 shadow-sm p-5'>
+            <h2>Please Register</h2>
             <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
