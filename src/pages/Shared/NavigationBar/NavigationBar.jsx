@@ -2,13 +2,17 @@
 import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { FaUserAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
 
 const NavigationBar = () => {
     const {user, logOutUser} = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleLogOut = ()=>{
         logOutUser()
+        .then(()=>{
+            navigate("/category/0")
+        })
     }
     return (
             <Container>
