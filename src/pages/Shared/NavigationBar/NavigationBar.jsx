@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProviders';
 
 const NavigationBar = () => {
-    const {user} = useContext(AuthContext)
+    const {user, logOutUser} = useContext(AuthContext)
+    const handleLogOut = ()=>{
+        logOutUser()
+    }
     return (
-        <div>
             <Container>
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+            <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='position-relative'>
                     <Container>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
@@ -19,24 +21,23 @@ const NavigationBar = () => {
                             <Nav.Link to="about">About</Nav.Link>
                             <Nav.Link >Career</Nav.Link>
                         </Nav>
-                        <Nav>
+                        </Navbar.Collapse>
+                        <Nav className='position-absolute top-0 end-0 mt-2 me-3'>
                             <div>
                                 {
                                     user?(<>
                                     <div className='d-flex align-items-center gap-2'>
                                         <FaUserAlt style={{fontSize:"30px"}}/>
-                                        <p className='mt-2'>{user.displayName}</p>
-                                        <Link><Button variant="secondary">Log Out</Button></Link>
+                                        <p className='mt-2'>{user.email}</p>
+                                        <Link><Button onClick={handleLogOut} variant="secondary">Log Out</Button></Link>
                                     </div>
                                     </>):<Link to="/login"><Button variant="secondary">Login</Button></Link>
                                 }
                             </div>
                         </Nav>
-                        </Navbar.Collapse>
                     </Container>
                 </Navbar>
             </Container>
-        </div>
     );
 };
 

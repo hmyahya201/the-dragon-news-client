@@ -1,14 +1,31 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Form  } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProviders';
 
 
 const Login = () => {
+    const {loginUser} = useContext(AuthContext)
+
+    const loginHandler = (event)=>{
+        event.preventDefault();
+        const form = event.target
+        const email = form.email.value;
+        const password = form.password.value;
+       loginUser(email, password)
+       .then(result=>{
+        alert("login Success")
+        form.reset()
+       })
+       .catch(error=>{
+        console.log(error.message)
+       })
+    }
     return (
         <Container className='w-50 max-auto my-5 shadow-sm p-5'>
             <h2>Please Login</h2>
-            <Form>
+            <Form onSubmit={loginHandler }>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" name="email" placeholder="Enter email" />
